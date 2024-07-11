@@ -62,7 +62,8 @@ requests==2.32.2
 s3transfer==0.10.1
 shapely @ file:///Users/runner/miniforge3/conda-bld/shapely_1715876512626/work
 six @ file:///tmp/build/80754af9/six_1644875935023/work
-snuggs @ file:///Users/ktietz/demo/mc3/conda-bld/snuggs_1629803886966/work
+#snuggs @ file:///Users/ktietz/demo/mc3/conda-bld/snuggs_1629803886966/work
+snuggs==1.4.7
 SQLAlchemy @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_6bkf4b2wco/croot/sqlalchemy_1705089116227/work
 sqlparse @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_cb77ukgrpu/croot/sqlparse_1690901947630/work
 tqdm==4.66.4
