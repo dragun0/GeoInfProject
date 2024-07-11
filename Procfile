@@ -1,1 +1,1 @@
-web: gunicorn MeningitisPredictionProject.wsg
+web: python manage.py migrate && gunicorn MeningitisPredictionProject.wsgi
