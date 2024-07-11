@@ -1,0 +1,2 @@
+# GeoInfProject
+Meningitis Prediction
