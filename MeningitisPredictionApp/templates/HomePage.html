@@ -1,0 +1,373 @@
+{% load static %}
+{% include 'Header.html' %}
+<!DOCTYPE html>
+
+<style>
+.background-image {
+    background-size: cover;
+    background-image: url("{% static 'title1.jpeg' %}");
+}
+</style>
+
+<!--------------------------------------
+HEADER
+--------------------------------------->
+<div class="container">
+	<div class="jumbotron jumbotron-fluid mb-3 pt-0 pb-0 bg-lightblue position-relative">
+		<div class="pl-4 pr-0 h-100 tofront">
+			<div class="row justify-content-between">
+				<div class="col-md-6 pt-6 pb-6 align-self-center">
+					<h1 class="secondfont mb-3 font-weight-bold">Predicting Meningitis Outbreak Risks through Satellite-derived Weather Forecasts</h1>
+					<p class="mb-3">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</p>
+					<a href="{% url 'methodology' metho_id=7 %}" class="btn btn-dark">Read More</a>
+				</div>
+                <div class="col-md-6 d-none d-md-block pr-0 background-image">
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Header -->
+
+<!--------------------------------------
+MAIN
+--------------------------------------->
+
+<!-- First Row: Two Separate Maps -->
+<div class="container pt-4">
+    <div class="title-left pb-4">
+        <h2 class="h4 font-weight-bold">
+            <a class="text-dark">Latest Meningitis Risk Predictions</a>
+        </h2>
+    </div>
+    <div class="row">
+            <div class="map-container">
+                <div class="map-wrapper">
+                    <h2 class="mb-2 h6 font-weight-bold">
+                    <a class="text-dark"> Forecast: {{RiskMaps.1.name}}</a>
+                    </h2>
+                    <div id="map1" class="map"></div>
+                </div>
+                <div class="map-wrapper">
+                    <h2 class="mb-2 h6 font-weight-bold">
+                    <a class="text-dark"> Forecast: {{RiskMaps.0.name}}</a>
+                    </h2>
+                    <div id="map2" class="map"></div>
+                </div>
+            </div>
+    </div>
+    
+</div>
+
+
+<!-- Second Row: Map Legend -->
+<div class="container pb-4">
+   <div class='my-legend'>
+      <div class='legend-title'>Legend</div>
+      <div class='legend-scale'>
+        <ul class='legend-labels'>
+         <div class="row" >
+            <div class="col-1 pt-3">
+               <li><span style='background:#FF0000;'></span>&nbsp</li>
+            </div>
+            <div class="col-11 pt-2">
+               <p class="small" >
+                  Red vigilance level - Forecasted atmospheric conditions predicted during the week are very favourable for meningitis outbreaks. Health services are advised to strengthen meningitis surveillance and preparedness to respond to outbreaks as appropriate. The red vigilance level is defined when the weekly mean relative humidity is 20% or lower, surface dust concentration is greater or equal to 400 μg m-3, weekly mean temperature greater or equal to 30 ◦C. These atmospheric conditions are associated with northerly winds.</li>
+               </div>
+         </div>
+         <div class="row" >
+               <div class="col-1 pt-2 pb-2">
+                  <li><span style='background:#E97451;'></span>&nbsp</li>
+                  <li><span style='background:#E3963E;'></span>&nbsp</li>
+                  <li><span style='background:#F28C28;'></span>&nbsp</li>
+                  <li><span style='background:#FFAC1C;'></span>&nbsp</li>
+               </div>
+               <div class="col-11 pt-1">
+                  <p class="small" >
+                     Orange vigilance level - Forecasted atmospheric conditions predicted during the week will be favourable for the occurrence of meningitis cases.  Health services are encouraged to
+                     activate the meningitis surveillance and systems.                  </p>
+               </div>
+         </div>
+         <div class="row" >
+            <div class="col-1 pt-2">
+               <li><span style='background:#FFEA00;'></span>&nbsp</li>
+               <li><span style='background:#FFFF8F;'></span>&nbsp</li>
+            </div>
+            <div class="col-11 pt-2">
+               <p class="small" >
+                  Yellow vigilance level - Forecasted atmospheric conditions predicted are not favourable for the occurrence of meningitis cases. Cases are less likely.            
+               </div>
+         </div>
+         <div class="row" >
+            <div class="col-1 pt-2">
+               <li><span style='background:#FFFFF0;'></span>&nbsp</li>
+               <li><span style='background:#FFFFFF;'></span>&nbsp</li>
+            </div>
+            <div class="col-11 pt-1">
+               <p class="small" >
+                  White vigilance level - Issued when forecasted relative humidity is above 60% whatever the temperature and surface dust concentrations. Meningitis cases are not expected.
+               </div>
+         </div>
+        </ul>
+      </div>
+      <div class='legend-source'>Source: <a href="https://pdf.sciencedirectassets.com/313337/1-s2.0-S2405880721X00088/1-s2.0-S2405880722000449/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQCds%2FTMDMrNEi%2FsXPDUjq2u8oCiviK5igO1YeSMCi4VzQIhALqKxCtgW%2BC1AHtzoFp4XLr442TKAQsmrPhY8fZM%2FnJnKrMFCDIQBRoMMDU5MDAzNTQ2ODY1IgzZ0tGx%2B15YbeSS380qkAUXwdJgveVHB0UCA7YGMVALpkY%2BAsL9Wzab9%2FA2Pjgmiqpl4xjOaIaup99QZj7hc4gpuwqGFyadkUNPFLlKuC%2F4mvVIIr7lmqV%2BWvj2%2BL6CIigEQfhY1x1i4ERG4ugve%2F17OXsTOBhS%2BWSrsPV9irpYL0fc%2FT8QhbMsbYSu8sIPyzBbfSZ1DPm%2BMaiRXEShq5ETvZ47ibOhD1FKTMtuja1wolpLWFCZ%2BuCJqHHO3YdXURGiWzOsXf%2BBmjaZrCEB%2FbMrxEvx7m1QlN6Bi%2FsYqNivgRvakqW1vPvO6OfFz76z9afoSAQFMDbkHwEueRZQv0zTv81KpD143xAwv6LZA5LQtiGspr13c4tF5oQISFmYpmbry%2B0DHAGueyuga1fOFCpm028%2Fd%2FjELfG2209aXK7728h24x3fDrI2ulUUJwNhHreX8FylDOFzWme76MzVXDRcMuUbYr%2FiSBHjYeTtEbzMHWAYzsfo0%2Fqs7ZoOxz7pbJCWnQdqH%2BQcJX98HgwGONvbf%2BtTxkvQtgbrEW0jX07cXrOqj1NLNhC0nJZkMufy5r6bUUl4NaYtb1yL%2BTZAaNAT3G8eNqxgb4G3jMi%2BBIv67cGHV66W1AYkwgMJFE5NHOdlwFqFO631TGOE0QvDrJTSfZEiaef10yj5xJb9Hd7SWAIj%2FJAl7ZAHizl%2F%2FT9TaPiJtmN8FoFJCC6XMb9kZchN2f1oUiqF0P4k40G%2FGKriOk7c89cmQ3qvch5yrUjjhcYlFxiWL6R4g7KD1xUBPyPo%2BlMGM%2FWhEVxbakl4mIQ8cBXMTQIgmWZbyoQv9NkUn5tHhyEhC6ycU3CQ6a4KPO%2BdLiDWAz1ltMIPPgUBvMKetLRUnLHmNN%2FcZVs8r8S63jDC0uKyBjqwASfdUh4gXYW3j1imy%2Bcv0aMQO%2BFwvnyR2uGEoDMJuVf0uQB6P1O2OQETJMnFYEAc1Z%2F6vVfzHTFkrm0da1uI8TRZJLaie6%2BzhSISbknfduFPg8XC3Io3lEJ89YAlvl1VijelyzHRot4CbQQ%2Ba6F7lCKNwUAAoEATlASgasVON5iKdPATPke1Rc8mKa42xyI8CFYb0qPd23wDIhGydd3FPKyMvIZK6udn1zYgDY4%2BQs7d&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240530T170734Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTY6AJJQWME%2F20240530%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=4a86694c0ed09f74aeba6075806d3f7f9676768178f40c34ab978a23518e474a&hash=8545f9611cb3b5d1b6e247a5b8e1748422e5e25c9c24543259a074424c24054a&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S2405880722000449&tid=spdf-660f9e0b-08bb-445e-b63d-661e7a760833&sid=62767e5f3daa774530691b4142334361bce0gxrqb&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=0f16565607505252510d&rr=88c0523c2fc3a265&cc=it"
+         >Dione et al.</a></div>
+      </div>
+
+</div>
+
+
+
+ <!-- Thrid Row: Articles and Reading -->   
+<div class="container pt-4">
+	<div class="row justify-content-between">
+		<div class="col-md-8">
+			<h5 class="font-weight-bold spanborder"><span>The Situation on the Ground</span></h5>
+			<div class="mb-3 d-flex justify-content-between">
+				<div class="pr-3">
+					<h2 class="mb-1 h4 font-weight-bold">
+					<a class="text-dark" href="{% url 'article' article_id=4 %}">Why Africa has the most significant prevailance of bacterial meningitis. </a>
+					</h2>
+					<p>
+						The reason for the susceptibility of Africa to major epidemics of meningococcal disease is at least in part related to its climate, with outbreaks varying with the season and the geographic location.
+					</p>
+					<div class="card-text text-muted small">
+						 Africa 
+					</div>
+					<small class="text-muted">Dec 12 &middot; 5 min read</small>
+				</div>
+				<img height="120" src="{% static 'africa_meningitis.jpeg' %}">
+			</div>
+			<div class="mb-3 d-flex justify-content-between">
+				<div class="pr-3">
+					<h2 class="mb-1 h4 font-weight-bold">
+					<a class="text-dark" href="{% url 'article' article_id=5 %}">Why is bacterial meningitis so dangerous?</a>
+					</h2>
+					<p>
+						If left untreated, bacterial meningitis can result in a mortality rate of up to 50%, making it one of the leading causes of death among infants and young children worldwide.
+					</p>
+					<div class="card-text text-muted small">
+						 Bacterial Meningitis
+					</div>
+					<small class="text-muted">Dec 12 &middot; 5 min read</small>
+				</div>
+				<img height="120" src="{% static 'meningitis.jpeg' %}">
+			</div>
+			<div class="mb-3 d-flex justify-content-between">
+				<div class="pr-3">
+					<h2 class="mb-1 h4 font-weight-bold">
+					<a class="text-dark" href="{% url 'article' article_id=6 %}">How prediction and early warning systems of the disease can save lives.</a>
+					</h2>
+					<p>
+						humanitarian - health - medical staff on alert can take measures..
+					</p>
+					<div class="card-text text-muted small">
+						 Methodology
+					</div>
+					<small class="text-muted">Dec 12 &middot; 5 min read</small>
+				</div>
+				<img height="120" src="{% static 'medic2.jpeg' %}">
+			</div>
+		</div>
+		<div class="col-md-4 pl-4">
+            <h5 class="font-weight-bold spanborder"><span>Data Sources</span></h5>
+			<ol class="list-featured">
+				<li>
+				<span>
+				<h6 class="font-weight-bold">
+				<a href="./article.html" class="text-dark">NASA - Global Modelling and Assimilation Office: GEOS Forward Processing</a>
+				</h6>
+				<p class="text-muted">
+					NASA
+				</p>
+				</span>
+				</li>
+				<li>
+				<span>
+				<h6 class="font-weight-bold">
+				<a href="./article.html" class="text-dark">ECMWF - Real-time weather ensemble forecast</a>
+				</h6>
+				<p class="text-muted">
+					ECMWF
+				</p>
+				</span>
+				</li>
+				<li>
+				<span>
+				<h6 class="font-weight-bold">
+				<a href="https://www.sciencedirect.com/science/article/pii/S2405880722000449" class="text-dark">Improved sub-seasonal forecasts to support preparedness action for meningitis outbreak in Africa</a>
+				</h6>
+				<p class="text-muted">
+					Dione et al.
+				</p>
+				</span>
+				</li>
+				<li>
+				<span>
+				<h6 class="font-weight-bold">
+				<a href="./article.html" class="text-dark">bla bal bla</a>
+				</h6>
+				<p class="text-muted">
+					more bla
+				</p>
+				</span>
+				</li>
+			</ol>
+		</div>
+	</div>
+</div>
+
+<!-- Fourth Row: Side-by-Side Map -->
+<div class="container pt-4 pb-4">
+    <div class="map-container">
+        <div class="side-by-side-map">
+            <div id="map3" class="map"></div>
+            <div class="map-title-left font-weight-bold">Forecast: {{RiskMaps.1.name}}</div>
+            <div class="map-title-right font-weight-bold">Forecast: {{RiskMaps.0.name}}</div>
+            <div id="geosearch" class="geosearch"></div>
+        </div>
+    </div>
+</div>
+
+    
+<!--------------------------------------
+FOOTER
+--------------------------------------->
+{% include 'Footer.html' %}
+<!-- End Footer -->
+
+<script>
+    // Initialize Map 1
+    var map1 = L.map('map1').setView([3, 17], 3);
+    //L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map1);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+       maxZoom: 19
+    }).addTo(map1);
+    L.tileLayer('/raster/tiles/{{RiskMaps.1.id}}/{z}/{x}/{y}.png?legend=Vigilence levels', {
+       opacity: 0.6
+    }).addTo(map1);
+    L.control.scale({imperial: false}).addTo(map1);
+
+    // Initialize Map 2
+    var map2 = L.map('map2').setView([3, 17], 3);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+       maxZoom: 19
+    }).addTo(map2);
+    L.tileLayer('/raster/tiles/{{RiskMaps.0.id}}/{z}/{x}/{y}.png?legend=Vigilence levels', {
+       opacity: 0.6
+    }).addTo(map2);
+    L.control.scale({imperial: false}).addTo(map2);
+
+    // Initialize Side-by-Side Map
+    var map3 = L.map('map3').setView([4, 13], 3);
+         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map3);
+
+         var layer1 = L.tileLayer('/raster/tiles/{{RiskMaps.1.id}}/{z}/{x}/{y}.png?legend=Vigilence levels', {
+            opacity: 0.6
+         });
+         var layer2 = L.tileLayer('/raster/tiles/{{RiskMaps.0.id}}/{z}/{x}/{y}.png?legend=Vigilence levels', {
+            opacity: 0.6
+         });
+         L.control.scale({imperial: false}).addTo(map3);
+
+         var sideBySide = L.control.sideBySide(layer1, layer2).addTo(map3);
+         // Add layers to the map to ensure they are loaded and ready
+         layer1.addTo(map3);
+         layer2.addTo(map3);
+
+         // Geocoding Control
+         const provider = new GeoSearch.OpenStreetMapProvider();
+         const searchControl = new GeoSearch.GeoSearchControl({
+            provider: provider,
+            style: 'bar',
+            showMarker: true,
+            autoClose: false,
+            searchLabel: 'Search',
+         });
+         map3.addControl(searchControl);
+
+         // Handle visibility of titles based on slider position
+         document.addEventListener('DOMContentLoaded', function() {
+            // Function to handle title visibility
+            function updateTitles() {
+               var dividerPosition = sideBySide._divider.offsetLeft / map3.getSize().x;
+
+               if (dividerPosition < 0.25) {
+                  document.querySelector('.map-title-left').style.opacity = '0';
+               } else {
+                  document.querySelector('.map-title-left').style.opacity = '1';
+               }
+
+               if (dividerPosition > 0.75) {
+                  document.querySelector('.map-title-right').style.opacity = '0';
+               } else {
+                  document.querySelector('.map-title-right').style.opacity = '1';
+               }
+            }
+
+            // Create an observer instance
+            var observer = new MutationObserver(updateTitles);
+
+            // Start observing the target node for configured mutations
+            observer.observe(sideBySide._divider, { attributes: true, childList: true, subtree: true });
+
+            // Initial call to set title visibility
+            updateTitles();
+         });
+
+         // Geolocation control
+         var geolocationControl = L.control.locate({
+            flyTo: true,
+            position: 'topleft',
+            drawCircle: true,
+            drawMarker: true,
+            setView: 'once',
+            markerStyle: {
+               weight: 1,
+               opacity: 1,
+               fillOpacity: 1
+            },
+            strings: {
+               title: "Show me my location"
+            }
+         }).addTo(map3);
+
+         // create a fullscreen button and add it to the map
+
+         var fullscreenControl = L.control.fullscreen({
+                  position: 'topright', // change the position of the button can be topleft, topright, bottomright or bottomleft, default topleft
+                  title: 'Show me the fullscreen !', // change the title of the button, default Full Screen
+                  titleCancel: 'Exit fullscreen mode', // change the title of the button when fullscreen is on, default Exit Full Screen
+                  content: null, // change the content of the button, can be HTML, default null
+                  forceSeparateButton: true, // force separate button to detach from zoom buttons, default false
+                  forcePseudoFullscreen: true, // force use of pseudo full screen even if full screen API is available, default false
+                  fullscreenElement: false // Dom element to render in full screen, false by default, fallback to map._container
+	         }).addTo(map3);
+
+      // events are fired when entering or exiting fullscreen.
+      map3.on('enterFullscreen', function () {
+	   console.log('entered fullscreen');
+      });
+
+      map3.on('exitFullscreen', function () {
+	   console.log('exited fullscreen');
+      });
+
+      
+
+</script>
+
+
+<!-- Javascript -->
+
+<script src="{% static 'jquery.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'popper.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'functions.js' %}" type="text/javascript"></script>
+
+
+</body>
+    
+</html>

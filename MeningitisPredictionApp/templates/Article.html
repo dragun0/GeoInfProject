@@ -1,0 +1,115 @@
+{% load static %}
+{% include 'Header.html' %}
+<!DOCTYPE html>
+
+
+
+<style>
+
+	
+	.article-background-image {
+		background-size: cover;
+		height: 450px;
+		background-image: url("{% static 'medic2.jpeg' %}");
+		background-repeat: no-repeat;
+	}
+	</style>
+<body>
+    
+<!--------------------------------------
+Main
+<div class="article-background-image">
+                </div>
+
+				<img src="{{ appArticle.articleImage.url }}">
+				<div style="background-image: url(./assets/img/demo/1.jpg); height: 350px; background-size: cover; background-repeat: no-repeat;">
+				</div>
+--------------------------------------->
+<div class="container mt-5 mb-5">
+	<div class="row">
+		<div class="col-md-8">
+			<h5 class="font-weight-bold spanborder"><span>The Situation on the Ground</span></h5>
+			<div class="card border-0 mb-5 box-shadow">
+				<div style="background-image: url('{{ appArticle.articleImage.url }}'); height: 400px; background-size: cover; background-repeat: no-repeat;">
+				</div>
+				
+				<div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
+					<h2 class="h2 font-weight-bold">
+					<a class="text-dark" ><span>{{appArticle.articleTitle}}</span></a>
+					</h2>
+					<p style="white-space: pre-line">
+						{{appArticle.articleContent}}
+					</p>
+					</p>
+					
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		<div class="col-md-4 pl-4">
+			<div class="sticky-top">
+				<h5 class="font-weight-bold spanborder"><span>""</span></h5>
+				<div class="mb-3 d-flex justify-content-between">
+					<div class="pr-3">
+						<span>
+						<h6 class="font-weight-bold">
+						<a class="text-dark" href="{% url 'article' article_id=4 %}">Why Africa has the most significant prevailance of bacterial meningitis. </a>
+						</h6>
+						<p class="text-muted small">
+							The reason for the susceptibility of Africa to major epidemics of meningococcal disease is at least in part related to its climate, with outbreaks varying with the season and the geographic location.
+					    </p>
+						</span>
+					</div>
+					<img height="120" src="{% static 'africa_meningitis.jpeg' %}">
+				</div>
+				<div class="mb-3 d-flex justify-content-between">
+					<div class="pr-3">
+						<span>
+						<h6 class="font-weight-bold">
+						<a class="text-dark" href="{% url 'article' article_id=5 %}">Why is bacterial meningitis so dangerous? </a>
+						</h6>
+						<p class="text-muted small">
+							If left untreated, bacterial meningitis can result in a mortality rate of up to 50%, making it one of the leading causes of death among infants and young children worldwide.					    </p>
+						</span>
+					</div>
+					<img height="120" src="{% static 'meningitis.jpeg' %}">
+				</div>
+				<div class="mb-3 d-flex justify-content-between">
+					<div class="pr-3">
+						<span>
+						<h6 class="font-weight-bold">
+						<a class="text-dark" href="{% url 'article' article_id=6 %}">How prediction and early warning systems of the disease can save lifes. </a>
+						</h6>
+						<p class="text-muted small">
+							humanitarian - health - medical staff on alert can take measures.. bla bla
+						</span>
+					</div>
+					<img height="120" src="{% static 'medic2.jpeg' %}">
+				</div>
+					
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+    
+<!-- End Main -->
+    
+<!--------------------------------------
+FOOTER
+--------------------------------------->
+{% include 'Footer.html' %}
+<!-- End Footer -->
+    
+<!--------------------------------------
+JAVASCRIPTS
+--------------------------------------->
+<script src="{% static 'jquery.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'popper.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'functions.js' %}" type="text/javascript"></script>
+
+</body>
+</html>

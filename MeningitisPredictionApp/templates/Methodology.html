@@ -1,0 +1,108 @@
+{% load static %}
+{% include 'Header.html' %}
+<!DOCTYPE html>
+<style>
+	.article-background-image {
+		background-size: cover;
+		height: 450px;
+		background-image: url("{% static 'methodology.jpeg' %}");
+		background-repeat: no-repeat;
+	}
+	</style>
+<body>
+    
+<!--------------------------------------
+Main
+--------------------------------------->
+<div class="container mt-5 mb-5">
+	<div class="row">
+		<div class="col-md-8">
+			<h5 class="font-weight-bold spanborder"><span>{{methoArticle.articleSubtitle}}</span></h5>
+			<div class="card border-0 mb-5 box-shadow">
+				<div style="background-image: url('{{ methoArticle.articleImage.url }}'); height: 400px; background-size: cover; background-position: 50% 60%; background-repeat: no-repeat;">
+				</div>
+				
+				<div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
+					<h2 class="h2 font-weight-bold">
+					<a class="text-dark" ><span>{{methoArticle.articleTitle}}</span></a>
+					</h2>
+					<p style="white-space: pre-line">
+						{{methoArticle.articleContent}}
+					</p>
+					</p>
+					
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		<div class="col-md-4 pl-4">
+			<div class="sticky-top">
+				<h5 class="font-weight-bold spanborder"><span>Data Sources</span></h5>
+				<div class="mb-3 d-flex justify-content-between">
+                    <img height="80" src="{% static 'nasa_logo.png' %}">
+					<div class="pr-3 pl-3">
+						<span>
+						<h6 class="font-weight-bold">
+						<a class="text-dark" href="./Article"> NASA/GMAO GEOS - Forward Processing - Forecast </a>
+						</h6>
+						<p class="text-muted small">
+							Uses a model forecast to gnerate a time-series of forecast products 10 days into the future
+					    </p>
+						</span>
+					</div>
+				
+				</div>
+				<div class="mb-3 d-flex justify-content-between">
+                    <img height="80" src="{% static 'nasa_logo.png' %}">
+					<div class="pr-3 pl-3">
+						<span>
+						<h6 class="font-weight-bold">
+						<a class="text-dark" href="./Article">NASA/GMAO GEOS - Forward Processing - Assimilation </a>
+						</h6>
+						<p class="text-muted small">
+							Uses a combination of atmospheric data assimilation and model forecasting to generate a time-series of atmospheric quantities of the past.
+                        </p>
+						</span>
+					</div>
+					
+				</div>
+				<div class="mb-3 d-flex justify-content-between">
+                    <img height="90" src="{% static 'esa_logo.png' %}">
+					<div class="pr-3 pl-3">
+						<span>
+						<h6 class="font-weight-bold">
+						<a class="text-dark" href="./Article">ECMWF </a>
+						</h6>
+						<p class="text-muted small">
+							bla bla bbbbbsdfsdf sdf ldsf sdf sdf dsf dfs 
+						</span>
+					</div>
+					
+				</div>
+					
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+    
+<!-- End Main -->
+    
+<!--------------------------------------
+FOOTER
+--------------------------------------->
+{% include 'Footer.html' %}
+<!-- End Footer -->
+    
+<!--------------------------------------
+JAVASCRIPTS
+--------------------------------------->
+<script src="{% static 'jquery.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'popper.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'functions.js' %}" type="text/javascript"></script>
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Meningitis Outbreak Risk Forecast</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+      <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.1.0/dist/geosearch.css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+      <script src="https://unpkg.com/leaflet-geosearch@3.1.0/dist/bundle.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+      <script src="{% static 'leaflet-side-by-side.min.js' %}"></script>
+      <style>
+         body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-y: auto;
+         }
+         .map-container {
+            display: flex;
+            justify-content: space-around;
+            width: 95%;
+            height: 70vh; /* increase this height to vertically increase the 2 maps in the first row */
+            margin-bottom: 20px;
+         }
+         .map-wrapper {
+            width: 45%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+         }
+         .map {
+            width: 100%;
+            height: 100%;
+         }
+         h2, h3 {
+            margin: 10px;
+            text-align: center;
+         }
+         .legend {
+            width: 80%;
+            margin: 10px;
+            text-align: center;
+            flex-grow: 1; /* Allow legend to expand based on content */
+         }
+         .side-by-side-map {
+            width: 100%;
+            height: 85vh; /* increase this height to vertically expand the side by side map in the 3rd row */
+            position: relative;
+            margin-top: 20px;
+         }
+         .title {
+            position: absolute;
+            top: 10px;
+            font-size: 16px;
+            padding: 5px 10px;
+            z-index: 1000;
+         }
+         .title-left {
+            left: 55px;
+            top: 12px;
+            background-color: #FFFFFF;
+             
+         }
+         .title-right {
+            right: 10px;
+            background-color: #FFFFFF;
+         }
+         .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .color-box {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        .high-risk { background-color: #FF0000; }  /* Red */
+        .moderate-risk1 { background-color: #E97451; }  /* Orange */
+        .moderate-risk2 { background-color: #E3963E; }  /* Orange */
+        .moderate-risk3 { background-color: #F28C28; }  /* Orange */
+        .moderate-risk4 { background-color: #FFAC1C; }  /* Orange */
+        .low-risk1 { background-color: #FFEA00; }  /* Yellow */
+        .low-risk2 { background-color: #FFFF8F; }  /* Yellow */
+        .very-low-risk1 { background-color: #FFFFF0; border: 1px solid black; }  /* White with border */
+        .very-low-risk2 { background-color: #FFFFFF; border: 1px solid black; }  /* White with border */
+      </style>
+   </head>
+   <body>
+      <h2><b>Meningitis Outbreak Risk Forecast</b></h2>
+      
+      <!-- First Row: Two Separate Maps -->
+      <div class="map-container">
+         <div class="map-wrapper">
+            <h3>Forecast for week {{RiskMaps.1.name}}</h3>
+            <div id="map1" class="map"></div>
+         </div>
+         <div class="map-wrapper">
+            <h3>Forecast for week {{RiskMaps.0.name}}</h3>
+            <div id="map2" class="map"></div>
+         </div>
+      </div>
+
+      <!-- Second Row: Legend -->
+      <div class="legend">
+         <h3>Legend</h3>
+         <div class="legend-item">
+            <div class="color-box high-risk"></div>
+            <span>High Risk</span>
+        </div>
+        <div class="legend-item">
+            <div class="color-box moderate-risk1"></div>
+            <span>Moderate Risk</span>
+        </div>
+        <div class="legend-item">
+         <div class="color-box moderate-risk2"></div>
+         <span>Moderate Risk</span>
+        </div>
+        <div class="legend-item">
+         <div class="color-box moderate-risk3"></div>
+         <span>Moderate Risk</span>
+        </div>
+        <div class="legend-item">
+         <div class="color-box moderate-risk4"></div>
+         <span>Moderate Risk</span>
+        </div>
+        <div class="legend-item">
+            <div class="color-box low-risk1"></div>
+            <span>Low Risk</span>
+        </div>
+        <div class="legend-item">
+         <div class="color-box low-risk2"></div>
+         <span>Low Risk</span>
+        </div>
+        <div class="legend-item">
+            <div class="color-box very-low-risk1"></div>
+            <span>Very Low Risk</span>
+        </div>
+        <div class="legend-item">
+         <div class="color-box very-low-risk2"></div>
+         <span>Very Low Risk</span>
+     </div>
+      </div>
+
+      <!-- Third Row: Side-by-Side Map -->
+      <div class="side-by-side-map">
+         <div id="map3" class="map"></div>
+         <div class="title title-left">Forecast for week {{RiskMaps.1.name}}</div>
+         <div class="title title-right">Forecast for week {{RiskMaps.0.name}}</div>
+         <div id="geosearch" class="geosearch"></div>
+      </div>
+
+      <script>
+         // Initialize Map 1
+         var map1 = L.map('map1').setView([3, 17], 3);
+         //L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map1);
+         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+            maxZoom: 19
+         }).addTo(map1);
+         L.tileLayer('/raster/tiles/{{RiskMaps.1.id}}/{z}/{x}/{y}.png?legend=Vigilence levels', {
+            opacity: 0.6
+         }).addTo(map1);
+         L.control.scale({imperial: false}).addTo(map1);
+
+         // Initialize Map 2
+         var map2 = L.map('map2').setView([3, 17], 3);
+         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+            maxZoom: 19
+         }).addTo(map2);
+         L.tileLayer('/raster/tiles/{{RiskMaps.0.id}}/{z}/{x}/{y}.png?legend=Vigilence levels', {
+            opacity: 0.6
+         }).addTo(map2);
+         L.control.scale({imperial: false}).addTo(map2);
+
+         // Initialize Side-by-Side Map
+         var map3 = L.map('map3').setView([4, 13], 3);
+         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map3);
+
+         var layer1 = L.tileLayer('/raster/tiles/{{RiskMaps.1.id}}/{z}/{x}/{y}.png?legend=Vigilence levels', {
+            opacity: 0.6
+         });
+         var layer2 = L.tileLayer('/raster/tiles/{{RiskMaps.0.id}}/{z}/{x}/{y}.png?legend=Vigilence levels', {
+            opacity: 0.6
+         });
+         L.control.scale({imperial: false}).addTo(map3);
+
+         var sideBySide = L.control.sideBySide(layer1, layer2).addTo(map3);
+         // Add layers to the map to ensure they are loaded and ready
+         layer1.addTo(map3);
+         layer2.addTo(map3);
+
+         // Geocoding Control
+         const provider = new GeoSearch.OpenStreetMapProvider();
+         const searchControl = new GeoSearch.GeoSearchControl({
+            provider: provider,
+            style: 'bar',
+            showMarker: true,
+            autoClose: false,
+            searchLabel: 'Search',
+         });
+         map3.addControl(searchControl);
+
+         // Handle visibility of titles based on slider position
+         document.addEventListener('DOMContentLoaded', function() {
+            // Function to handle title visibility
+            function updateTitles() {
+               var dividerPosition = sideBySide._divider.offsetLeft / map3.getSize().x;
+
+               if (dividerPosition < 0.22) {
+                  document.querySelector('.title-left').style.opacity = '0';
+               } else {
+                  document.querySelector('.title-left').style.opacity = '1';
+               }
+
+               if (dividerPosition > 0.78) {
+                  document.querySelector('.title-right').style.opacity = '0';
+               } else {
+                  document.querySelector('.title-right').style.opacity = '1';
+               }
+            }
+
+            // Create an observer instance
+            var observer = new MutationObserver(updateTitles);
+
+            // Start observing the target node for configured mutations
+            observer.observe(sideBySide._divider, { attributes: true, childList: true, subtree: true });
+
+            // Initial call to set title visibility
+            updateTitles();
+         });
+
+         // Geolocation control
+         var geolocationControl = L.control.locate({
+            flyTo: true,
+            position: 'topleft',
+            drawCircle: true,
+            drawMarker: true,
+            setView: 'once',
+            markerStyle: {
+               weight: 1,
+               opacity: 1,
+               fillOpacity: 1
+            },
+            strings: {
+               title: "Show me my location"
+            }
+         }).addTo(map3);
+      </script>
+   </body>
+</html>

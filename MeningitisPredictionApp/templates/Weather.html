@@ -1,0 +1,112 @@
+{% load static %}
+{% include 'Header.html' %}
+<!DOCTYPE html>
+<style>
+	.article-background-image {
+		background-size: cover;
+		height: 450px;
+		background-image: url("{% static 'weather.jpeg' %}");
+		background-repeat: no-repeat;
+	}
+	</style>
+<body>
+    
+<!--------------------------------------
+Main
+--------------------------------------->
+<div class="container mt-5 mb-5">
+	<div class="row">
+		<div class="col-md-8">
+			<h5 class="font-weight-bold spanborder"><span>Weather Variables</span></h5>
+			<div class="card border-0 mb-5 box-shadow">
+				<div class="article-background-image">
+                </div>
+				
+				<div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
+					<h2 class="h2 font-weight-bold">
+					<a class="text-dark" href="./article.html">Atmospheric conditions favouring Meningitis Outbreaks</a>
+					</h2>
+					<p class="card-text">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Gravida in fermentum et sollicitudin. Risus sed vulputate odio ut. Habitant morbi tristique senectus et netus et malesuada fames ac. Nec dui nunc mattis enim ut tellus elementum. Vitae justo eget magna fermentum iaculis eu. At ultrices mi tempus imperdiet. Orci sagittis eu volutpat odio facilisis mauris sit. Nullam vehicula ipsum a arcu cursus vitae congue mauris rhoncus. Aliquet porttitor lacus luctus accumsan tortor. Ipsum nunc aliquet bibendum enim facilisis gravida. Laoreet id donec ultrices tincidunt arcu non sodales neque sodales. Et magnis dis parturient montes nascetur. Et odio pellentesque diam volutpat commodo sed egestas. Integer feugiat scelerisque varius morbi enim nunc. Quam adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus urna.
+
+Risus viverra adipiscing at in tellus integer feugiat scelerisque varius. Duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam. Integer malesuada nunc vel risus commodo viverra. Iaculis urna id volutpat lacus laoreet non. Mauris augue neque gravida in fermentum et sollicitudin ac. Habitant morbi tristique senectus et netus et malesuada fames ac. Purus semper eget duis at tellus at urna condimentum mattis. In tellus integer feugiat scelerisque. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare. Proin nibh nisl condimentum id venenatis a. Aliquam ut porttitor leo a diam sollicitudin tempor id eu. Sit amet risus nullam eget felis eget nunc lobortis. Netus et malesuada fames ac turpis egestas maecenas pharetra convallis. Ultrices eros in cursus turpis massa. Nisl rhoncus mattis rhoncus urna neque viverra justo. Vitae semper quis lectus nulla. Metus vulputate eu scelerisque felis imperdiet. Ut etiam sit amet nisl purus in mollis. Odio aenean sed adipiscing diam donec adipiscing tristique risus nec.
+
+Imperdiet nulla malesuada pellentesque elit. Egestas pretium aenean pharetra magna ac placerat vestibulum lectus. Vitae tortor condimentum lacinia quis. Ut ornare lectus sit amet est placerat in egestas erat. Odio ut sem nulla pharetra diam sit amet. Risus nullam eget felis eget nunc. Justo eget magna fermentum iaculis eu non diam. Aliquet risus feugiat in ante metus dictum at tempor commodo. Leo urna molestie at elementum eu facilisis sed. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Dolor morbi non arcu risus. Tellus molestie nunc non blandit massa enim nec dui. Pharetra sit amet aliquam id. Blandit turpis cursus in hac habitasse platea dictumst quisque.
+					</p>
+					</p>
+					
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		<div class="col-md-4 pl-4">
+			<div class="sticky-top">
+				<h5 class="font-weight-bold spanborder"><span>Data Sources</span></h5>
+				<div class="mb-3 d-flex justify-content-between">
+                    <img height="90" src="{% static 'nasa1.jpeg' %}">
+					<div class="pr-3 pl-3">
+						<span>
+						<h6 class="font-weight-bold">
+						<a class="text-dark" href="./Article"> NASA GEOS-Forward Processing - Forecast </a>
+						</h6>
+						<p class="text-muted small">
+							Uses a model forecast to gnerate a time-series of forecast products 10 days into the future
+					    </p>
+						</span>
+					</div>
+				
+				</div>
+				<div class="mb-3 d-flex justify-content-between">
+                    <img height="90" src="{% static 'nasa2.jpeg' %}">
+					<div class="pr-3 pl-3">
+						<span>
+						<h6 class="font-weight-bold">
+						<a class="text-dark" href="./Article">NASA GEOS-Forward Processing - Assimilation </a>
+						</h6>
+						<p class="text-muted small">
+							Uses a combination of atmospheric data assimilation and model forecasting to generate a time-series of atmospheric quantities of the past.
+                        </p>
+						</span>
+					</div>
+					
+				</div>
+				<div class="mb-3 d-flex justify-content-between">
+                    <img height="90" src="{% static 'ecmwf.jpeg' %}">
+					<div class="pr-3 pl-3">
+						<span>
+						<h6 class="font-weight-bold">
+						<a class="text-dark" href="./Article">ECMWF bdfbdfsdfd </a>
+						</h6>
+						<p class="text-muted small">
+							bla bla bbbbbsdfsdf sdf ldsf sdf sdf dsf dfs 
+						</span>
+					</div>
+					
+				</div>
+					
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+    
+<!-- End Main -->
+    
+<!--------------------------------------
+FOOTER
+--------------------------------------->
+{% include 'Footer.html' %}
+<!-- End Footer -->
+    
+<!--------------------------------------
+JAVASCRIPTS
+--------------------------------------->
+<script src="{% static 'jquery.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'popper.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'functions.js' %}" type="text/javascript"></script>
+
+</body>
+</html>

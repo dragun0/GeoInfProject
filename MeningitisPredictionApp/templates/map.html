@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Risk Map</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+      <style>
+         body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+         }
+         .map-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            flex-grow: 1;
+         }
+         .map-wrapper {
+            width: 48%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+         }
+         .map {
+            width: 100%;
+            flex-grow: 1;
+         }
+         h2, h3 {
+            margin: 10px;
+            text-align: center;
+         }
+      </style>
+   </head>
+   <body>
+      <h2><b>Meningitis Outbreak Risk Forecast</b></h2>
+      <div class="map-container">
+         <div class="map-wrapper">
+            <h3>Forecast for week 27/05/2024 - 02/06/2024</h3>
+            <div id="map1" class="map"></div>
+         </div>
+         <div class="map-wrapper">
+            <h3>Forecast for week 03/06/2024 - 09/06/2024</h3>
+            <div id="map2" class="map"></div>
+         </div>
+      </div>
+      <script>
+         // Map 1 creation
+         var map1 = L.map('map1').setView([6, 13], 3);
+         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map1);
+         L.tileLayer('/raster/tiles/11/{z}/{x}/{y}.png?legend=Vigilence levels', {
+            opacity: 0.6
+         }).addTo(map1);
+
+         // Map 2 creation
+         var map2 = L.map('map2').setView([6, 13], 3);
+         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map2);
+         L.tileLayer('/raster/tiles/12/{z}/{x}/{y}.png?legend=Vigilence levels', {
+            opacity: 0.6
+         }).addTo(map2);
+      </script>
+   </body>
+</html>
