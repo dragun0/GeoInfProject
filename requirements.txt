@@ -1,76 +1,79 @@
 affine==2.3.0
-amqp @ file:///tmp/build/80754af9/amqp_1599164852799/work
-asgiref @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_edg6nzjrx0/croots/recipe/asgiref_1661287549316/work
+amqp==2.6.1
+asgiref==3.5.2
 async-timeout==4.0.3
-attrs @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_8d7cifg9jt/croot/attrs_1695717834289/work
-backports.zoneinfo @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_4ampz1_6cv/croots/recipe/backports.zoneinfo_1661287537252/work
-billiard @ file:///opt/concourse/worker/volumes/live/d81028da-84f6-46ba-573b-e6384c616d15/volume/billiard_1617383656248/work
+attrs==23.1.0
+backports.zoneinfo==0.2.1
+billiard==3.6.4.0
 boto3==1.34.112
 botocore==1.34.112
-Bottleneck @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_cfe9itj_y_/croot/bottleneck_1707864223016/work
-celery @ file:///tmp/build/80754af9/celery_1608141960753/work
-certifi @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_dfez5lkpj0/croot/certifi_1707229180975/work/certifi
-cffi @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_229m2kq9fi/croot/cffi_1714483160856/work
-cftime @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_eatzui_zhs/croot/cftime_1678830375183/work
+Bottleneck==1.3.7
+celery==5.0.5
+certifi==2024.2.2
+cffi==1.16.0
+cftime==1.6.2
 charset-normalizer==3.3.2
-click @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_f27dk3zwrb/croot/click_1698129816363/work
-click-didyoumean==0.3.1
+click==8.1.7
+click-didyoumean==0.0.3
 click-plugins==1.1.1
-click-repl @ file:///tmp/build/80754af9/click-repl_1622540786278/work
+click-repl==0.2.0
 cligj==0.7.2
-cron_descriptor @ file:///home/conda/feedstock_root/build_artifacts/cron-descriptor_1706610497028/work
-cryptography @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_68gfzyfa8d/croot/cryptography_1714660688802/work
-Django @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_066uop7vqa/croots/recipe/django_1661292540858/work
-django-celery-beat @ file:///home/conda/feedstock_root/build_artifacts/django-celery-beat_1709510655868/work
+cron_descriptor==1.4.3
+cryptography==42.0.5
+Django==4.1
+django-celery-beat==2.6.0
 django-colorful==1.3
-django-raster4 @ git+https://github.com/amserra/django-raster4@777cb66ebb4a2a382fe6b21fffa1fa1e87a9c9e0
-django-timezone-field @ file:///home/conda/feedstock_root/build_artifacts/django-timezone-field_1700999233360/work
+django-raster4==0.0.4
+django-timezone-field==6.1.0
 eccodes==1.7.0
 ecmwf-data==0.0.1
 ecmwf-opendata==0.3.8
 ecmwflibs==0.5.3
 findlibs==0.0.5
-fiona @ file:///Users/runner/miniforge3/conda-bld/fiona_1716272150929/work
-future @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_27i98bxita/croot/future_1677599886956/work
-GDAL @ file:///Users/runner/miniforge3/conda-bld/gdal-split_1716194216741/work/build/swig/python
-greenlet @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_10cuim1il_/croot/greenlet_1702059962773/work
+fiona==1.9.6
+future==0.18.3
+GDAL==3.8.5
+greenlet==3.0.1
 gunicorn==22.0.0
 idna==3.7
-importlib-metadata @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_37pdw0fbft/croot/importlib_metadata-suite_1704813531185/work
+importlib-metadata==7.0.1
 jmespath==1.0.1
-kombu @ file:///opt/concourse/worker/volumes/live/dbf0e249-56ff-4acd-4675-46aa2b46f63b/volume/kombu_1596111223029/work
+kombu==4.6.11
 metview==1.16.0
 multiurl==0.3.1
-netCDF4 @ file:///Users/runner/miniforge3/conda-bld/netcdf4_1715938814258/work
-numexpr @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_1b50c1js9s/croot/numexpr_1683227065029/work
-numpy @ file:///Users/runner/miniforge3/conda-bld/numpy_1687808486671/work
-packaging @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_2bd6vdlyjt/croot/packaging_1710810554459/work
-pandas @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_dflcdcqtvf/croot/pandas_1692297394605/work
+netCDF4==1.6.5
+numexpr==2.8.4
+numpy==1.24.4
+packaging==23.2
+pandas==2.0.3
 pillow==10.3.0
-prompt-toolkit @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_4d8kk9w3ed/croot/prompt-toolkit_1704404354789/work
-psycopg2 @ file:///Users/runner/miniforge3/conda-bld/psycopg2-split_1701737555316/work
-pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
-pyparsing @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_3a17y2delq/croots/recipe/pyparsing_1661452538853/work
-python-crontab @ file:///home/conda/feedstock_root/build_artifacts/python-crontab_1716386083639/work
-python-dateutil @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_efk5_uakg8/croot/python-dateutil_1716495742183/work
+pip==24.0
+prompt-toolkit==3.0.43
+psycopg2==2.9.9
+pycparser==2.21
+pyparsing==3.0.9
+python-crontab==3.1.0
+python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
-pytz @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_244ln7biq9/croot/pytz_1713974320727/work
+pytz==2024.1
 PyYAML==6.0.1
-rasterio @ file:///Users/runner/miniforge3/conda-bld/rasterio_1716274974832/work
+rasterio==1.3.10
 redis==5.0.4
 requests==2.32.2
 s3transfer==0.10.1
-shapely @ file:///Users/runner/miniforge3/conda-bld/shapely_1715876512626/work
-six @ file:///tmp/build/80754af9/six_1644875935023/work
+setuptools==69.5.1
+shapely==2.0.4
+six==1.16.0
 snuggs==1.4.7
-SQLAlchemy @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_6bkf4b2wco/croot/sqlalchemy_1705089116227/work
-sqlparse @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_cb77ukgrpu/croot/sqlparse_1690901947630/work
+SQLAlchemy==2.0.25
+sqlparse==0.4.4
 tqdm==4.66.4
-typing_extensions @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_0b3pj9yhn2/croot/typing_extensions_1715268854415/work
-tzdata @ file:///croot/python-tzdata_1690578112552/work
+typing_extensions==4.11.0
+tzdata==2023.3
 urllib3==1.26.18
-vine==5.1.0
+vine==1.3.0
 wcwidth==0.2.13
-whitenoise @ file:///home/conda/feedstock_root/build_artifacts/whitenoise_1697025952449/work
-xarray @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_6eng0foshn/croot/xarray_1668776588572/work
-zipp @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_c8z3y7z1g1/croot/zipp_1704206911704/work
+wheel==0.43.0
+whitenoise==6.6.0
+xarray==2022.11.0
+zipp==3.17.0
