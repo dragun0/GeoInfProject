@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y \
     libgeos-dev \
     gdal-bin \
     libgdal-dev \
+    gcc \
+    g++ \
     git \
     && apt-get clean
 
