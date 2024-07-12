@@ -28,7 +28,7 @@
 
 <!--------------------------------------
 NAVBAR
---------------------------------------->
+
 <nav class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
 <div class="container">
         <a class="navbar-brand" href="{% url 'RiskMap' %}"><strong>MeniGuard</strong></a>
@@ -57,5 +57,49 @@ NAVBAR
         </div>
 </div>
 </nav>
+-->
 <!-- End Navbar -->
-        
+
+
+<body>
+    <nav class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'RiskMap' %}"><strong>MeniGuard</strong></a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbarColor02" style="">
+                <ul class="navbar-nav mr-auto d-flex align-items-center">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="#" onclick="redirectTo_BactMen(); return false;">Bacterial Meningitis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="redirectTo_Metho(); return false;">Methodology</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="redirectTo_Weather(); return false;">Weather Data</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto d-flex align-items-center">
+                    <li>
+                        <a class="nav-link" href="#" onclick="redirectToNewPage('./About'); return false;">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function redirectTo_BactMen() {
+            window.location.href = "{% url 'article' article_id=5 %}";
+        }
+        function redirectTo_Metho() {
+            window.location.href = "{% url 'methodology' metho_id=7 %}";
+        }
+        function redirectTo_Weather() {
+            window.location.href = "{% url 'methodology' metho_id=8 %}";
+        }
+    </script>
+</body>
+</html>
