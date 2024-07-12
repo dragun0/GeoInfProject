@@ -33,5 +33,6 @@ WORKDIR /app
 # Copy the project files into the container
 COPY . .
 
-# Command to run the application
-CMD ["gunicorn", "MeningitisPredictionProject.wsgi:application", "--bind", "0.0.0.0:8000"]
+# Command to run the application, using the PORT environment variable provided by Railway
+# Defaults to 8000 if none is provided
+CMD ["sh", "-c", "gunicorn MeningitisPredictionProject.wsgi:application --bind 0.0.0.0:${PORT:-8000}"]

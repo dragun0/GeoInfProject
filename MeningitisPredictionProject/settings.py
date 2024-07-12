@@ -88,12 +88,12 @@ WSGI_APPLICATION = 'MeningitisPredictionProject.wsgi.application'
 
 DATABASES = {
    'default': {
-       'ENGINE': os.environ.get("ENGINE"),
-       'NAME': os.environ.get("NAME"),
+       'ENGINE': os.environ.get("DB_ENGINE"),
+       'NAME': os.environ.get("DB_NAME"),
        'USER': 'geoinf_postgre',
-       'PASSWORD': os.environ.get("PASSWORD"),
-       'HOST': os.environ.get("HOST"),
-       'PORT': os.environ.get("PORT"),
+       'PASSWORD': os.environ.get("DB_PASSWORD"),
+       'HOST': os.environ.get("DB_HOST"),
+       'PORT': os.environ.get("DB_PORT"),
    }
 }
 
