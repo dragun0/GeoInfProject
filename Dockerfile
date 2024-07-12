@@ -8,6 +8,7 @@ ENV PYTHONUNBUFFERED 1
 RUN apt-get update && apt-get install -y \
     gdal-bin \
     libgdal-dev \
+    git \
     && apt-get clean
 
 # Create and activate virtual environment
@@ -27,5 +28,3 @@ COPY . .
 
 # Command to run the application
 CMD ["gunicorn", "MeningitisPredictionProject.wsgi:application", "--bind", "0.0.0.0:8000"]
-
-#
