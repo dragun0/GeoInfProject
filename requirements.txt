@@ -32,7 +32,7 @@ ecmwflibs==0.5.3
 findlibs==0.0.5
 fiona==1.9.6
 future==0.18.3
-gdal==3.8.5
+GDAL==3.8.5
 greenlet==3.0.1
 gunicorn==22.0.0
 idna==3.7

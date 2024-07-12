@@ -6,6 +6,9 @@ ENV PYTHONUNBUFFERED 1
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
+    libproj-dev \
+    libpq-dev \
+    libgeos-dev \
     gdal-bin \
     libgdal-dev \
     git \
@@ -14,6 +17,9 @@ RUN apt-get update && apt-get install -y \
 # Create and activate virtual environment
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
+
+# Install numpy before other dependencies
+RUN pip install numpy
 
 # Install Python dependencies
 COPY requirements.txt .
