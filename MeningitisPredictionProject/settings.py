@@ -173,7 +173,7 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 CELERY_BEAT_SCHEDULE = {
     'generate-risk-map': {
         'task': 'MeningitisPredictionApp.tasks.generate_risk_map',
-        'schedule': crontab(hour=21, minute=25),  # Runs daily at 9am
+        'schedule': crontab(hour=21, minute=25),  # Runs daily at 10:30 am CET = 8:30 UTC
     },
 }
 

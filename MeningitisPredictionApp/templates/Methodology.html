@@ -1,14 +1,7 @@
 {% load static %}
 {% include 'Header.html' %}
 <!DOCTYPE html>
-<style>
-	.article-background-image {
-		background-size: cover;
-		height: 450px;
-		background-image: url("{% static 'methodology.jpeg' %}");
-		background-repeat: no-repeat;
-	}
-	</style>
+
 <body>
     
 <!--------------------------------------
@@ -27,7 +20,7 @@ Main
 					<a class="text-dark" ><span>{{methoArticle.articleTitle}}</span></a>
 					</h2>
 					<p style="white-space: pre-line">
-						{{methoArticle.articleContent}}
+						{{articleContent|safe}}
 					</p>
 					</p>
 					
