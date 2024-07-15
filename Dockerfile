@@ -41,7 +41,7 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 EXPOSE ${PORT:-8000}
 
 # Command to run the application, using supervisord
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
 # Command to run the application, using the PORT environment variable provided by Railway
 # Defaults to 8000 if none is provided
