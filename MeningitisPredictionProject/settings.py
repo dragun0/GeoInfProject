@@ -167,13 +167,13 @@ RASTER_USE_CELERY = True
 #GDAL_LIBRARY_PATH = '/opt/anaconda3/envs/django/lib/libgdal.dylib'
 #GEOS_LIBRARY_PATH = '/usr/local/Cellar/geos/3.12.1/lib/libgeos_c.dylib'
 
-CELERY_BROKER_URL = 'redis://localhost:6379/0' 
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = 'REDIS_URL', 'redis://localhost:6379/0' 
+CELERY_RESULT_BACKEND = 'REDIS_URL', 'redis://localhost:6379/0'
 
 CELERY_BEAT_SCHEDULE = {
     'generate-risk-map': {
         'task': 'MeningitisPredictionApp.tasks.generate_risk_map',
-        'schedule': crontab(hour=21, minute=25),  # Runs daily at 10:30 am CET = 8:30 UTC
+        'schedule': crontab(hour=20, minute=00),  # Runs daily at 10:30 am CET = 8:30 am UTC
     },
 }
 
