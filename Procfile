@@ -1,3 +1,1 @@
-web: python manage.py migrate && gunicorn MeningitisPredictionProject.wsgi
-worker: celery -A MeningitisPredictionProject worker --loglevel=info
-beat: celery -A MeningitisPredictionProject beat --loglevel=info
+web: python manage.py migrate && gunicorn MeningitisPredictionProject.wsgi & celery -A MeningitisPredictionProject worker --loglevel=info & celery -A MeningitisPredictionProject beat --loglevel=info  --bind 0.0.0.0:$PORT
