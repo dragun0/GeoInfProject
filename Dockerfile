@@ -35,11 +35,11 @@ WORKDIR /app
 COPY . .
 
 # Copy the start script
-COPY start.sh /app/start.sh
-RUN chmod +x /app/start.sh
+#COPY start.sh /app/start.sh
+#RUN chmod +x /app/start.sh
 
 # Command to run the start shell script
-CMD ["sh", "/app/start.sh"]
+#CMD ["sh", "/app/start.sh"]
 
 # Expose the port
 # EXPOSE ${PORT:-8000}
