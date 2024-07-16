@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+  #  'django_celery_beat', #test
     'django.contrib.gis',
     'django.contrib.admin',
     'django.contrib.auth',
