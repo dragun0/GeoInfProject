@@ -26,7 +26,12 @@ RUN pip install numpy
 
 # Install Python dependencies
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt && \ 
+    adduser \                                           
+        --disabled-password \
+        --no-create-home \
+        django-user
+#RUN pip install -r requirements.txt
 
 # Set the working directory
 WORKDIR /app
@@ -47,3 +52,5 @@ COPY . .
 # Defaults to 8000 if none is provided
 # CMD ["sh", "-c", "gunicorn MeningitisPredictionProject.wsgi:application --bind 0.0.0.0:${PORT:-8000}"]
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+
+USER django-user

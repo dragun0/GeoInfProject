@@ -38,7 +38,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-  #  'django_celery_beat', #test
+    'django_celery_beat', #test
     'django.contrib.gis',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -170,6 +170,13 @@ RASTER_USE_CELERY = True
 
 CELERY_BROKER_URL = 'REDIS_URL', #'redis://localhost:6379/0' 
 CELERY_RESULT_BACKEND = 'REDIS_URL', #'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC' 
+
+# For django-celery-beat
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 CELERY_BEAT_SCHEDULE = {
     'generate-risk-map': {
