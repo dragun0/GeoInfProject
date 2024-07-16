@@ -41,17 +41,17 @@ WORKDIR /app
 COPY . .
 
 #Copy the start script
-COPY start.sh /app/start.sh
-RUN chmod +x /app/start.sh
+#COPY start.sh /app/start.sh
+#RUN chmod +x /app/start.sh
 
 # Command to run the start shell script
-CMD ["sh", "/app/start.sh"]
+#CMD ["sh", "/app/start.sh"]
 
 # Expose the port
 # EXPOSE ${PORT:-8000}
 # Command to run the application, using the PORT environment variable provided by Railway
 # Defaults to 8000 if none is provided
 # CMD ["sh", "-c", "gunicorn MeningitisPredictionProject.wsgi:application --bind 0.0.0.0:${PORT:-8000}"]
-#CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:${PORT:-8000}]
 
 #USER django-user
