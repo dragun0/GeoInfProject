@@ -26,12 +26,13 @@ RUN pip install numpy
 
 # Install Python dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt && \ 
-    adduser \                                           
-        --disabled-password \
-        --no-create-home \
-        django-user
-#RUN pip install -r requirements.txt
+#RUN pip install --no-cache-dir -r requirements.txt && \ 
+#    adduser \                                           
+#        --disabled-password \
+#        --no-create-home \
+#        django-user
+
+RUN pip install -r requirements.txt
 
 # Set the working directory
 WORKDIR /app
@@ -39,18 +40,18 @@ WORKDIR /app
 # Copy the project files into the container
 COPY . .
 
-# Copy the start script
-#COPY start.sh /app/start.sh
-#RUN chmod +x /app/start.sh
+#Copy the start script
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
 
 # Command to run the start shell script
-#CMD ["sh", "/app/start.sh"]
+CMD ["sh", "/app/start.sh"]
 
 # Expose the port
 # EXPOSE ${PORT:-8000}
 # Command to run the application, using the PORT environment variable provided by Railway
 # Defaults to 8000 if none is provided
 # CMD ["sh", "-c", "gunicorn MeningitisPredictionProject.wsgi:application --bind 0.0.0.0:${PORT:-8000}"]
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+#CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
 
-USER django-user
+#USER django-user
