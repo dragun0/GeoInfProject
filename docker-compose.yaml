@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  django:
+    build: .
+    container_name: django
+    command: sh -c "gunicorn MeningitisPredictionProject.wsgi:application --bind 0.0.0.0:${PORT:-8000}"
+    volumes:
+      - .:/app
+    ports:
+      - "${PORT:-8000}:${PORT:-8000}"
+    environment:
+      - PORT
+      - DJANGO_SETTINGS_MODULE=MeningitisPredictionProject.settings
+      - REDIS_URL=${REDIS_URL}
+
+  celery_worker:
+    build: .
+    container_name: celery_worker
+    command: celery -A MeningitisPredictionProject worker --loglevel=info
+    volumes:
+      - .:/app
+    environment:
+      - CELERY_BROKER_URL=${REDIS_URL}
+
+  celery_beat:
+    build: .
+    container_name: celery_beat
+    command: celery -A MeningitisPredictionProject beat --loglevel=info
+    volumes:
+      - .:/app
+    environment:
+      - CELERY_BROKER_URL=${REDIS_URL}
