@@ -34,15 +34,6 @@ WORKDIR /app
 # Copy the project files into the container
 COPY . .
 
-# Copy the supervisord configuration file
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-# Expose the port
-EXPOSE ${PORT:-8000}
-
-# Command to run the application, using supervisord
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
-
 # Command to run the application, using the PORT environment variable provided by Railway
 # Defaults to 8000 if none is provided
-# CMD ["sh", "-c", "gunicorn MeningitisPredictionProject.wsgi:application --bind 0.0.0.0:${PORT:-8000}"]
+CMD ["sh", "-c", "gunicorn MeningitisPredictionProject.wsgi:application & celery -A MeningitisPredictionProject:worker --loglevel=info & celery -A MeningitisPredictionProject:beat & --bind 0.0.0.0:${PORT:-8000}"]
