@@ -99,15 +99,6 @@ DATABASES = {
 }
 
 
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -165,23 +156,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # for django-raster package 
 RASTER_USE_CELERY = True
 
-#GDAL_LIBRARY_PATH = '/opt/anaconda3/envs/django/lib/libgdal.dylib'
-#GEOS_LIBRARY_PATH = '/usr/local/Cellar/geos/3.12.1/lib/libgeos_c.dylib'
-
-CELERY_BROKER_URL = os.environ['REDIS_URL'] #'REDIS_URL' #'redis://localhost:6379/0' 
-CELERY_RESULT_BACKEND = os.environ['REDIS_URL'] #'REDIS_URL' #'redis://localhost:6379/0'
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
+#CELERY_ACCEPT_CONTENT = ['json']
+#CELERY_TASK_SERIALIZER = 'json'
+#CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC' 
 
 # For django-celery-beat
-# CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+#CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 CELERY_BEAT_SCHEDULE = {
     'generate-risk-map': {
         'task': 'MeningitisPredictionApp.tasks.generate_risk_map',
-        'schedule': crontab(hour=3, minute=12),  # Runs daily at 10:30 am CET = 8:30 am UTC
+        'schedule': crontab(hour=8, minute=30),  #8:30 am UTC
     },
 }
 
